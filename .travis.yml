@@ -1,0 +1,8 @@
+sudo: required
+language: generic
+services:
+  - docker
+before_install:
+  - docker build -t timbilt/frontend -f Dockerfile.dev .
+script:
+  - docker run -e CI=true timbilt/frontend npm run test
